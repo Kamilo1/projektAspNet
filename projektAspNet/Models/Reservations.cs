@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 namespace projektAspNet.Models
 {
+    [Table("Reservations")]
     public class Reservations
     {
         [Key]

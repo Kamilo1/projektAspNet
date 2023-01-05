@@ -17,6 +17,14 @@ namespace projektAspNet.Models
                 new Reservations() { Id = 2, RouteID = 2, CustomerID = 2, KayakType = "podwójny", NumberOfKayaks = 4 },
                 new Reservations() { Id = 3, RouteID = 3, CustomerID = 3, KayakType = "pojedynczy", NumberOfKayaks = 2 }
                 );
+            modelBuilder.Entity<Routes>().HasData(
+                new Routes() { Id = 1, RouteName = "wadowice-witanowice" },
+                new Routes() { Id = 2, RouteName = "wadowice-woźniki" },
+                new Routes() { Id = 3, RouteName = "wadowice-grodzisko" },
+                new Routes() { Id = 4, RouteName = "witanowice-woźniki" },
+                new Routes() { Id = 5, RouteName = "witanowice-grodzisko" },
+                new Routes() { Id = 6, RouteName = "woźniki-grodzisko" }
+                );
         }
     }
 }

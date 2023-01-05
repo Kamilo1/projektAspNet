@@ -12,6 +12,12 @@ namespace projektAspNet.Models
                new Customers() { Id = 2, FirstName = "Marcin", LastName = "Zając", Pesel = "22222222222", CompanyName = "Acer", NIP = "2222222222" },
                new Customers() { Id = 3, FirstName = "Fabian", LastName = "Nowak", Pesel = "33333333333"}
                 );
+            modelBuilder.Entity<Reservations>().HasData(
+                new Reservations() { Id = 1, RouteID = 1, CustomerID = 1, KayakType = "pojedynczy", NumberOfKayaks = 3 },
+                new Reservations() { Id = 2, RouteID = 2, CustomerID = 2, KayakType = "podwójny", NumberOfKayaks = 4 },
+                new Reservations() { Id = 3, RouteID = 3, CustomerID = 3, KayakType = "pojedynczy", NumberOfKayaks = 2 }
+                );
         }
     }
 }
+//Install-Package Microsoft.EntityFrameworkCore

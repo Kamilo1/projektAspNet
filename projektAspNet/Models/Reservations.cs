@@ -5,6 +5,11 @@ namespace projektAspNet.Models
     [Table("Reservations")]
     public class Reservations
     {
+        public Reservations()
+        {
+            customers = new HashSet<Customers>();
+            Routes = new HashSet<Routes>();
+        }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
@@ -16,5 +21,7 @@ namespace projektAspNet.Models
         public string KayakType { get; set; }
         [Required]
         public int NumberOfKayaks { get; set; }
+        public virtual ISet<Customers> customers { set; get; }
+        public virtual ISet<Routes> Routes { set; get; }
     }
 }

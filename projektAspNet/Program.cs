@@ -1,7 +1,14 @@
-var builder = WebApplication.CreateBuilder(args);
+using projektAspNet.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.SqlServer;
 
-// Add services to the container.
+var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
+var connectionString = builder.Configuration.GetConnectionString("Default") ?? throw new InvalidOperationException("Connection string 'Default' not found.");
+builder.Services.AddDbContext<AppDbContext>(
+    options => options.UseSqlServer(connectionString));
+
 
 var app = builder.Build();
 

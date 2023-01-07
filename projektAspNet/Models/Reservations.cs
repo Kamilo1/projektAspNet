@@ -3,12 +3,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace projektAspNet.Models
 {
     [Table("Reservations")]
-    public class Reservations
+    public class Reservation
     {
-        public Reservations()
+        public Reservation()
         {
-            customers = new HashSet<Customers>();
-            Routes = new HashSet<Routes>();
+            Customers = new HashSet<Customer>();
+            Routes = new HashSet<Route>();
         }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -21,7 +21,9 @@ namespace projektAspNet.Models
         public string KayakType { get; set; }
         [Required]
         public int NumberOfKayaks { get; set; }
-        public virtual ISet<Customers> customers { set; get; }
-        public virtual ISet<Routes> Routes { set; get; }
+        public virtual ISet<Customer> Customers { set; get; }
+        public virtual ISet<Route> Routes { set; get; }
+        public Route Route { get; set; }
+        public Customer Customer { get; set; }
     }
 }

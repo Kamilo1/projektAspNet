@@ -4,13 +4,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace projektAspNet.Models
 {
     [Table("Customers")]
-    public class Customers
+    public class Customer
     {
-        public Customers() 
-        {
-            Routes = new HashSet<Routes>();
-            Reservations = new HashSet<Reservations>();
-        }
+      //  public Customer() 
+    //    {
+        //    Routes = new HashSet<Route>();
+     //       Reservations = new HashSet<Reservation>();
+     //   }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [HiddenInput]
@@ -30,8 +30,9 @@ namespace projektAspNet.Models
         [Display(Name = "NIP")]
         [StringLength(10)]
         public string NIP { get; set; }
-        public virtual ISet<Routes>? Routes { set; get; }
-        public virtual ISet<Reservations>? Reservations { set; get; }
+      //  public virtual ISet<Route> Routes { set; get; }
+      //  public virtual ISet<Reservation> Reservations { set; get; }
+      public ICollection<Reservation> Reservation { get; set; }
 
 
     }

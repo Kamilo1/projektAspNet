@@ -25,7 +25,7 @@ namespace projektAspNet.Controllers
         }
 
         // GET: ReservationsController/Create
-        public ActionResult Create()
+        public IActionResult Create()
         {
             return View();
         }

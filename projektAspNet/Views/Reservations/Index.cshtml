@@ -1,0 +1,95 @@
+﻿@model IEnumerable<projektAspNet.Models.Reservation>   
+@{
+    ViewData["Title"] = "Reservations";
+}
+<style type="text/css">
+    .tabelaReservations {
+        max-width: 768px;
+        font-family: sans-serif;
+        background: linear-gradient(45deg, #49a09d, #5f2c82);
+        padding: 40px 20px;
+        color: #fff;
+    }
+
+    .tabelaReservations table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+
+
+
+    .tabelaReservations tr {
+            background: #000;
+            background: rgba(255,255,255,.3);
+            border-bottom: solid 1px #fff;
+            text-align: left;
+        }
+
+    .tabelaReservations tbody tr {
+            background: rgba(255,255,255,.1);
+        }
+
+    .tabelaReservations tbody tr:hover {
+                background: rgba(255,0,0,.1);
+            }
+
+        .tabelaReservations td {
+            padding: 8px 4px;
+            text-align: left;
+        }
+</style>
+<h1>Reservations</h1>
+<p>
+    <a asp-action="Create">Add new reservation</a>
+</p>
+<div class="tabelaReservations">
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <b>Reservations_ID</b>
+                </th>
+                <th>
+                    <b>RouteID</b>
+                </th>
+                <th>
+                    <b>CustomerID</b>
+                </th>
+                <th>
+                    <b>KayakType</b>
+                </th>
+                <th>
+                    <b>NumberOfKayaks</b>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var reservation in Model)
+            {
+                <tr>
+                    <td style="text-align:center">
+                        @reservation.Id
+                        <br>
+                    </td>
+                    <td style="text-align:center">
+                        @reservation.RouteID
+                            <br>
+                        </td>
+                    <td style="text-align:center">
+                        @reservation.CustomerID
+                        <br>
+                    </td>
+                    <td style="text-align:center">
+                        @reservation.KayakType
+                        <br>
+                    </td>
+                    <td style="text-align:center">
+                        @reservation.NumberOfKayaks
+                        <br>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

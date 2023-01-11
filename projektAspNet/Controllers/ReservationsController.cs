@@ -33,41 +33,46 @@ namespace projektAspNet.Controllers
         // POST: ReservationsController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,RouteID,CustomerID,KayakType,NumberOfKayak")] Reservation reservation)
+        public async Task<IActionResult> Create([Bind("Id,RouteID,CustomerID,KayakType,NumberOfKayaks")] Reservation reservation)
         {
-            if (ModelState.IsValid)
-            {
                 _context.Add(reservation);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            }
-            return View(reservation);
         }
 
         // GET: ReservationsController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int? id)
         {
-            return View();
+            if (id == null || _context.Reservations == null)
+            {
+                return NotFound();
+            }
+            var reservation = await _context.Reservations.FindAsync(id);
+            if (reservation == null)
+            {
+                return NotFound();
+            }
+            return View(reservation);
         }
 
         // POST: ReservationsController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> Edit(int id,[Bind("Id,RouteID,CustomerID,KayakType,NumberOfKayaks")] Reservation reservation)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+           
+                
+                    _context.Update(reservation);
+                    await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
+
+        
 
         // GET: ReservationsController/Delete/5
         public ActionResult Delete(int id)
         {
+
             return View();
         }
 

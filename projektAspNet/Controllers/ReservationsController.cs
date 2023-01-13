@@ -19,9 +19,20 @@ namespace projektAspNet.Controllers
         }
 
         // GET: ReservationsController/Details/5
-        public ActionResult Details(int id)
+        public async Task<IActionResult> Details(int id)
         {
-            return View();
+            if (id == null || _context.Reservations == null)
+            {
+                return NotFound();
+            }
+            var reservation = await _context.Reservations
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (reservation == null)
+            {
+                return NotFound();
+            }
+
+            return View(reservation);
         }
 
         // GET: ReservationsController/Create
@@ -70,25 +81,45 @@ namespace projektAspNet.Controllers
         
 
         // GET: ReservationsController/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
+            if (id == null || _context.Reservations == null)
+            {
+                return NotFound();
+            }
+            var reservation = await _context.Reservations
+                 .FirstOrDefaultAsync(m => m.Id == id);
+            if (reservation == null)
+            {
+                return NotFound();
+            }
 
-            return View();
+            return View(reservation);
         }
 
         // POST: ReservationsController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            try
+            if (_context.Reservations == null)
             {
-                return RedirectToAction(nameof(Index));
+                return Problem("Entity set 'AppDbContext.Authors'  is null.");
             }
-            catch
+            var reservation = await _context.Reservations.FindAsync(id);
+            if (reservation != null)
             {
-                return View();
+                _context.Reservations.Remove(reservation);
             }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        private bool AuthorExists(int id)
+        {
+            return _context.Reservations.Any(e => e.Id == id);
         }
     }
 }
+

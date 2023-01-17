@@ -18,6 +18,9 @@ namespace projektAspNet.Models
         [Required]
         public int CustomerID { get; set; }
         [Required]
+        [DataType(DataType.Date)]
+        public DateTime DateOfKayaking { get; set; }
+        [Required]
         public string KayakType { get; set; }
         [Required]
         public int NumberOfKayaks { get; set; }

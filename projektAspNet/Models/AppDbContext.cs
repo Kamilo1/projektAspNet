@@ -20,9 +20,9 @@ namespace projektAspNet.Models
                new Customer() { Id = 3, FirstName = "Fabian", LastName = "Nowak", Pesel = "33333333333" , CompanyName = "Intel", NIP = "3333333333" }
                 );
             modelBuilder.Entity<Reservation>().HasData(
-                new Reservation() { Id = 1, RouteID = 1, CustomerID = 1, KayakType = "pojedynczy", NumberOfKayaks = 3 },
-                new Reservation() { Id = 2, RouteID = 2, CustomerID = 2, KayakType = "podwójny", NumberOfKayaks = 4 },
-                new Reservation() { Id = 3, RouteID = 3, CustomerID = 3, KayakType = "pojedynczy", NumberOfKayaks = 2 }
+                new Reservation() { Id = 1, RouteID = 1, CustomerID = 1, DateOfKayaking = DateTime.Parse("2001-10-25"), KayakType = "pojedynczy", NumberOfKayaks = 3 },
+                new Reservation() { Id = 2, RouteID = 2, CustomerID = 2, DateOfKayaking = DateTime.Parse("2000-11-09"), KayakType = "podwójny", NumberOfKayaks = 4 },
+                new Reservation() { Id = 3, RouteID = 3, CustomerID = 3, DateOfKayaking = DateTime.Parse("2002-12-17"), KayakType = "pojedynczy", NumberOfKayaks = 2 }
                 );
             modelBuilder.Entity<Route>().HasData(
                 new Route() { Id = 1, RouteName = "wadowice-witanowice" },

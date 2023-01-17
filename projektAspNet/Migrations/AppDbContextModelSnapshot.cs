@@ -102,6 +102,9 @@ namespace projektAspNet.Migrations
                     b.Property<int>("CustomerID")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("DateOfKayaking")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("KayakType")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -125,6 +128,7 @@ namespace projektAspNet.Migrations
                         {
                             Id = 1,
                             CustomerID = 1,
+                            DateOfKayaking = new DateTime(2001, 10, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             KayakType = "pojedynczy",
                             NumberOfKayaks = 3,
                             RouteID = 1
@@ -133,6 +137,7 @@ namespace projektAspNet.Migrations
                         {
                             Id = 2,
                             CustomerID = 2,
+                            DateOfKayaking = new DateTime(2000, 11, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             KayakType = "podwójny",
                             NumberOfKayaks = 4,
                             RouteID = 2
@@ -141,6 +146,7 @@ namespace projektAspNet.Migrations
                         {
                             Id = 3,
                             CustomerID = 3,
+                            DateOfKayaking = new DateTime(2002, 12, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             KayakType = "pojedynczy",
                             NumberOfKayaks = 2,
                             RouteID = 3

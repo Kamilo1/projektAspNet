@@ -12,6 +12,12 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DateOfKayaking)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DateOfKayaking)
+        </dd>
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.KayakType)
         </dt>
         <dd class = "col-sm-10">
@@ -28,12 +34,6 @@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Route.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Customer)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Customer.FirstName)
         </dd>
     </dl>
     

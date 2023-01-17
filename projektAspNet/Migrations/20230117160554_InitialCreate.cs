@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -38,6 +39,7 @@ namespace projektAspNet.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     RouteID = table.Column<int>(type: "int", nullable: false),
                     CustomerID = table.Column<int>(type: "int", nullable: false),
+                    DateOfKayaking = table.Column<DateTime>(type: "datetime2", nullable: false),
                     KayakType = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     NumberOfKayaks = table.Column<int>(type: "int", nullable: false)
                 },
@@ -96,12 +98,12 @@ namespace projektAspNet.Migrations
 
             migrationBuilder.InsertData(
                 table: "Reservations",
-                columns: new[] { "Id", "CustomerID", "KayakType", "NumberOfKayaks", "RouteID" },
+                columns: new[] { "Id", "CustomerID", "DateOfKayaking", "KayakType", "NumberOfKayaks", "RouteID" },
                 values: new object[,]
                 {
-                    { 1, 1, "pojedynczy", 3, 1 },
-                    { 2, 2, "podwójny", 4, 2 },
-                    { 3, 3, "pojedynczy", 2, 3 }
+                    { 1, 1, new DateTime(2001, 10, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "pojedynczy", 3, 1 },
+                    { 2, 2, new DateTime(2000, 11, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), "podwójny", 4, 2 },
+                    { 3, 3, new DateTime(2002, 12, 17, 0, 0, 0, 0, DateTimeKind.Unspecified), "pojedynczy", 2, 3 }
                 });
 
             migrationBuilder.CreateIndex(

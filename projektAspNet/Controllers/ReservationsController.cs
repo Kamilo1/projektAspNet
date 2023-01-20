@@ -48,7 +48,6 @@ namespace projektAspNet.Controllers
         // GET: Reservations1/Create
         public IActionResult Create()
         {
-            
             ViewData["CustomerID"] = new SelectList(_context.Customers, "Id", "Pesel");
             ViewData["RouteID"] = new SelectList(_context.Routes, "Id", "RouteName");
             return View();
@@ -61,10 +60,11 @@ namespace projektAspNet.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,RouteID,CustomerID,DateOfKayaking,KayakType,NumberOfKayaks")] Reservation reservation)
         {
+            
                 _context.Add(reservation);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-         
+            
             ViewData["CustomerID"] = new SelectList(_context.Customers, "Id", "Pesel", reservation.CustomerID);
             ViewData["RouteID"] = new SelectList(_context.Routes, "Id", "RouteName", reservation.RouteID);
             return View(reservation);
@@ -100,7 +100,7 @@ namespace projektAspNet.Controllers
                 return NotFound();
             }
 
-           
+            
                 try
                 {
                     _context.Update(reservation);

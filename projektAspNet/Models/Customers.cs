@@ -6,11 +6,11 @@ namespace projektAspNet.Models
     [Table("Customers")]
     public class Customer
     {
-      //  public Customer() 
-    //    {
+        //  public Customer() 
+        //    {
         //    Routes = new HashSet<Route>();
-     //       Reservations = new HashSet<Reservation>();
-     //   }
+        //       Reservations = new HashSet<Reservation>();
+        //   }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [HiddenInput]
@@ -25,14 +25,18 @@ namespace projektAspNet.Models
         [Required(ErrorMessage = "Pesel is required")]
         [StringLength(11)]
         public string Pesel { get; set; }
+        [Display(Name = "Telephone")]
+        [Required(ErrorMessage = "Telephone is required")]
+        [StringLength(9)]
+        public string Telephone { get; set; }
         [Display(Name = "CompanyName")]
         public string CompanyName { get; set; }
         [Display(Name = "NIP")]
         [StringLength(10)]
         public string NIP { get; set; }
-      //  public virtual ISet<Route> Routes { set; get; }
-      //  public virtual ISet<Reservation> Reservations { set; get; }
-      public ICollection<Reservation> Reservation { get; set; }
+        //  public virtual ISet<Route> Routes { set; get; }
+        //  public virtual ISet<Reservation> Reservations { set; get; }
+        public ICollection<Reservation> Reservation { get; set; }
 
 
     }

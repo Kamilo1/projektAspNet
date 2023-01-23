@@ -6,12 +6,72 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using projektAspNet.Models;
-
+using projektAspNet.Service;
 namespace projektAspNet.Controllers
 {
     public class CustomersController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly ICustomersService _customersService;
+        public CustomersController(AppDbContext context, ICustomersService customersService)
+        {
+            _customersService = customersService;
+        }
+        public async Task<IActionResult> Index()
+        {
+            return View(await _customersService.ListCustomers());
+        }
+        public IActionResult Details(Customer customer)
+        {
+            var onecustomer = _customersService.FindBy(customer.Id);
+            return onecustomer is null ? NotFound() : View(onecustomer);
+        }
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create([Bind("Id,FirstName,LastName,Pesel,Telephone,CompanyName,NIP")] Customer @customer)
+        {
+            
+                _customersService.Save(@customer);
+                return RedirectToAction(nameof(Index));
+          
+        }
+        public IActionResult Edit(int? id)
+        {
+            var customer = _customersService.FindBy(id);
+            return customer is null ? NotFound() : View(customer);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit([Bind("Id,FirstName,LastName,Pesel,Telephone,CompanyName,NIP")] Customer @customer)
+        {
+            
+                _customersService.Update(@customer);
+                return RedirectToAction(nameof(Index));
+            
+        }
+        public IActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var customer = _customersService.FindBy(id);
+            return customer is null ? NotFound() : View(customer);
+        }
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            if (_customersService.Delete(id))
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            return Problem("Trying delete no existing customer");
+        }
+        /*private readonly AppDbContext _context;
 
         public CustomersController(AppDbContext context)
         {
@@ -155,6 +215,6 @@ namespace projektAspNet.Controllers
         private bool CustomerExists(int id)
         {
           return _context.Customers.Any(e => e.Id == id);
-        }
+        }*/
     }
 }

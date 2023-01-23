@@ -2,14 +2,16 @@ using projektAspNet.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
+using projektAspNet.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 var connectionString = builder.Configuration.GetConnectionString("Default") ?? throw new InvalidOperationException("Connection string 'Default' not found.");
 builder.Services.AddDbContext<AppDbContext>(
     options => options.UseSqlServer(connectionString));
-
-
+builder.Services.AddScoped<IEventsService, EventsServiceEF>();
+builder.Services.AddScoped<ICustomersService, CustomersServiceEF>();
+builder.Services.AddScoped<IRoutesService, RoutesServiceEF>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

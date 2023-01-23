@@ -65,9 +65,7 @@ namespace projektAspNet.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             
-            ViewData["CustomerID"] = new SelectList(_context.Customers, "Id", "Pesel", reservation.CustomerID);
-            ViewData["RouteID"] = new SelectList(_context.Routes, "Id", "RouteName", reservation.RouteID);
-            return View(reservation);
+            
         }
 
         // GET: Reservations1/Edit/5
@@ -118,10 +116,6 @@ namespace projektAspNet.Controllers
                     }
                 }
                 return RedirectToAction(nameof(Index));
-            
-            ViewData["CustomerID"] = new SelectList(_context.Customers, "Id", "Pesel", reservation.CustomerID);
-            ViewData["RouteID"] = new SelectList(_context.Routes, "Id", "RouteName", reservation.RouteID);
-            return View(reservation);
         }
 
         // GET: Reservations1/Delete/5

@@ -5,21 +5,24 @@ using Microsoft.EntityFrameworkCore.SqlServer;
 using projektAspNet.Service;
 using projektAspNet.Data;
 using projektAspNet.Areas.Identity.Data;
+using Microsoft.AspNetCore.Identity.UI.Services;
+//using projektAspNet.Data;
+//using projektAspNet.Areas.Identity.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 var connectionString = builder.Configuration.GetConnectionString("Default") ?? throw new InvalidOperationException("Connection string 'Default' not found.");
 builder.Services.AddDbContext<AppDbContext>(
     options => options.UseSqlServer(connectionString));
-
-builder.Services.AddDbContext<IdentityDbContext>(options =>
-options.UseSqlServer(connectionString));
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+builder.Services.AddIdentity<AppUser, IdentityRole>()
 .AddEntityFrameworkStores<AppDbContext>()
-.AddDefaultTokenProviders();
-builder.Services.AddMemoryCache();
-builder.Services.AddSession();
+.AddDefaultTokenProviders()
+.AddDefaultUI()
+.AddRoles<IdentityRole>()
+.AddEntityFrameworkStores<AppDbContext>(); 
 builder.Services.AddRazorPages();
+
+               
 builder.Services.AddScoped<IEventsService, EventsServiceEF>();
 builder.Services.AddScoped<ICustomersService, CustomersServiceEF>();
 builder.Services.AddScoped<IRoutesService, RoutesServiceEF>();
@@ -35,14 +38,13 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
-app.UseStaticFiles();
-app.UseRouting();
-app.UseSession();
 app.UseAuthentication();
+app.UseAuthorization();
+app.MapRazorPages();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+app.UseAuthentication();;
 
 app.Run();
 public partial class Program { }

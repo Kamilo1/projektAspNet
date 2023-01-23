@@ -3,6 +3,10 @@
     "mssql1": {
       "type": "mssql.local",
       "connectionId": "ConnectionStrings:IdenttityDbContextConnection"
+    },
+    "mssql2": {
+      "type": "mssql.local",
+      "connectionId": "ConnectionStrings:IdentityDbContextConnection"
     }
   }
 }

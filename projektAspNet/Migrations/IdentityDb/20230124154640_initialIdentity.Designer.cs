@@ -3,17 +3,20 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using projektAspNet.Data;
 
 #nullable disable
 
-namespace projektAspNet.Migrations
+namespace projektAspNet.Migrations.IdentityDb
 {
     [DbContext(typeof(IdentityDbContext))]
-    partial class IdentityDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230124154640_initialIdentity")]
+    partial class initialIdentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,6 +50,15 @@ namespace projektAspNet.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "2c5e174e-3b0e-446f-86af-483d56fd7210",
+                            ConcurrencyStamp = "1",
+                            Name = "Administrator",
+                            NormalizedName = "ADMINISTRATOR"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -136,6 +148,13 @@ namespace projektAspNet.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "d57a3861-3c43-4ed0-86c1-c6f604a3afe7",
+                            RoleId = "2c5e174e-3b0e-446f-86af-483d56fd7210"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -222,6 +241,23 @@ namespace projektAspNet.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "d57a3861-3c43-4ed0-86c1-c6f604a3afe7",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "94523056-89a1-42ed-bb6c-8545bf52caca",
+                            Email = "wojtek.nowak@wp.pl",
+                            EmailConfirmed = true,
+                            LockoutEnabled = true,
+                            NormalizedEmail = "WOJTEK.NOWAK@WP.PL",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDn7zJKNvOxOJfiD0sU1ClLdi140pn37dVEyVZNdtIQ3a6518bnRWOZ94ZNZWYpbyw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "031e99dc-c50f-4540-b97d-63b98f860a57",
+                            TwoFactorEnabled = false,
+                            UserName = "wojtek.nowak@wp.pl"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

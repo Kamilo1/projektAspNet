@@ -3,10 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace projektAspNet.Migrations
+namespace projektAspNet.Migrations.IdentityDb
 {
     /// <inheritdoc />
-    public partial class initIdentity : Migration
+    public partial class initialIdentity : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -155,6 +155,21 @@ namespace projektAspNet.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[] { "2c5e174e-3b0e-446f-86af-483d56fd7210", "1", "Administrator", "ADMINISTRATOR" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "d57a3861-3c43-4ed0-86c1-c6f604a3afe7", 0, "94523056-89a1-42ed-bb6c-8545bf52caca", "wojtek.nowak@wp.pl", true, true, null, "WOJTEK.NOWAK@WP.PL", null, "AQAAAAEAACcQAAAAEDn7zJKNvOxOJfiD0sU1ClLdi140pn37dVEyVZNdtIQ3a6518bnRWOZ94ZNZWYpbyw==", null, false, "031e99dc-c50f-4540-b97d-63b98f860a57", false, "wojtek.nowak@wp.pl" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[] { "2c5e174e-3b0e-446f-86af-483d56fd7210", "d57a3861-3c43-4ed0-86c1-c6f604a3afe7" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

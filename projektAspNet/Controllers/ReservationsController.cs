@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +21,7 @@ namespace projektAspNet.Controllers
         }
 
         // GET: Reservations1
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Index()
         {
             var appDbContext = _context.Reservations.Include(r => r.Customer).Include(r => r.Route);
@@ -26,6 +29,7 @@ namespace projektAspNet.Controllers
         }
 
         // GET: Reservations1/Details/5
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Reservations == null)
@@ -46,6 +50,7 @@ namespace projektAspNet.Controllers
         }
 
         // GET: Reservations1/Create
+        [Authorize]
         public IActionResult Create()
         {
             ViewData["CustomerID"] = new SelectList(_context.Customers, "Id", "Pesel");
@@ -56,7 +61,7 @@ namespace projektAspNet.Controllers
         // POST: Reservations1/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost,Authorize]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,RouteID,CustomerID,DateOfKayaking,KayakType,NumberOfKayaks")] Reservation reservation)
         {
@@ -69,6 +74,7 @@ namespace projektAspNet.Controllers
         }
 
         // GET: Reservations1/Edit/5
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Reservations == null)
@@ -89,7 +95,7 @@ namespace projektAspNet.Controllers
         // POST: Reservations1/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost,Authorize(Roles = "Administrator")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,RouteID,CustomerID,DateOfKayaking,KayakType,NumberOfKayaks")] Reservation reservation)
         {
@@ -119,6 +125,7 @@ namespace projektAspNet.Controllers
         }
 
         // GET: Reservations1/Delete/5
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Reservations == null)
@@ -139,7 +146,7 @@ namespace projektAspNet.Controllers
         }
 
         // POST: Reservations1/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Delete"),Authorize(Roles = "Administrator")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {

@@ -5,10 +5,56 @@
 }
 
 <h1>Index</h1>
+<style>
+    .tabele {
+        width: 100%;
+        font-family: sans-serif;
+        background: linear-gradient(45deg, #1D735A, #01402E);
+        padding: 40px 20px;
+        color: #fff;
+    }
 
+
+        .tabele table {
+            width: 80%;
+            border-collapse: separate;
+            margin: 0 auto;
+        }
+
+        .tabele caption {
+            font-size: 1.2em;
+            padding-bottom: 20px;
+        }
+
+        .tabele tr {
+            background: #000;
+            background: rgba(255,255,255,.3);
+            border-bottom: solid 1px #fff;
+            width: 60%;
+        }
+
+        .tabele tbody tr {
+            background: rgba(255,255,255,.1);
+            width: 60%;
+        }
+
+            .tabele tbody tr:hover {
+                background: rgba(255,0,0,.1);
+            }
+
+        .tabele td {
+            padding: 8px 4px;
+            text-align: center;
+        }
+
+        .tabele thead tr th {
+            text-align: center;
+        }
+</style>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+<div class="tabele">
 <table class="table">
     <thead>
         <tr>
@@ -45,3 +91,4 @@
 }
     </tbody>
 </table>
+</div>

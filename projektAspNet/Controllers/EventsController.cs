@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.Routing;
@@ -27,11 +28,12 @@ namespace projektAspNet.Controllers
             var oneevent = _eventsService.FindBy(events.Id);
             return oneevent is null ? NotFound() : View(oneevent);
         }
+        [Authorize(Roles = "Administrator")]
         public IActionResult Create()
         {
             return View();
         }
-        [HttpPost]
+        [HttpPost,Authorize(Roles = "Administrator")]
         [ValidateAntiForgeryToken]
         public IActionResult Create([Bind("Id,EventName,DateOfEvent,Event_Location")] Event @event)
         {
@@ -42,12 +44,13 @@ namespace projektAspNet.Controllers
                 }
             return View(@event);
         }
+        [Authorize(Roles = "Administrator")]
         public IActionResult Edit(int? id)
         {
             var events = _eventsService.FindBy(id);
             return events is null ? NotFound() : View(events);
         }
-        [HttpPost]
+        [HttpPost,Authorize(Roles = "Administrator")]
         [ValidateAntiForgeryToken]
         public  IActionResult Edit(int id, [Bind("Id,EventName,DateOfEvent,Event_Location")] Event @event)
         {
@@ -58,6 +61,7 @@ namespace projektAspNet.Controllers
             }
             return View(@event);
         }
+        [Authorize(Roles = "Administrator")]
         public IActionResult Delete(int? id)
         {
             if (id == null)
@@ -67,7 +71,7 @@ namespace projektAspNet.Controllers
             var events = _eventsService.FindBy(id);
             return events is null ? NotFound() : View(events);
         }
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Delete"),Authorize(Roles = "Administrator")]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
         {

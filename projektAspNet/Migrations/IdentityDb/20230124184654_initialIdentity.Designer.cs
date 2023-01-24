@@ -12,7 +12,7 @@ using projektAspNet.Data;
 namespace projektAspNet.Migrations.IdentityDb
 {
     [DbContext(typeof(IdentityDbContext))]
-    [Migration("20230124154640_initialIdentity")]
+    [Migration("20230124184654_initialIdentity")]
     partial class initialIdentity
     {
         /// <inheritdoc />
@@ -247,14 +247,15 @@ namespace projektAspNet.Migrations.IdentityDb
                         {
                             Id = "d57a3861-3c43-4ed0-86c1-c6f604a3afe7",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "94523056-89a1-42ed-bb6c-8545bf52caca",
+                            ConcurrencyStamp = "d7f4d9cb-0f7f-4492-9d6e-fb7a9dc899e6",
                             Email = "wojtek.nowak@wp.pl",
                             EmailConfirmed = true,
                             LockoutEnabled = true,
                             NormalizedEmail = "WOJTEK.NOWAK@WP.PL",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDn7zJKNvOxOJfiD0sU1ClLdi140pn37dVEyVZNdtIQ3a6518bnRWOZ94ZNZWYpbyw==",
+                            NormalizedUserName = "wojtek.nowak@wp.pl",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDqGjuSWaUGscTZwZyKd73jr+bjMmCHGFswiwp6pDAQ4nxeJhH3wLsXuzMWIzHy4/A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "031e99dc-c50f-4540-b97d-63b98f860a57",
+                            SecurityStamp = "5554de00-f8da-44e5-b4e5-80d3afa1d32f",
                             TwoFactorEnabled = false,
                             UserName = "wojtek.nowak@wp.pl"
                         });

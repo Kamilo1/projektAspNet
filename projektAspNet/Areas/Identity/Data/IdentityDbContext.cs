@@ -29,7 +29,7 @@ public class IdentityDbContext : IdentityDbContext<ApplicationUser>
                NormalizedName = "ADMINISTRATOR"
            }
            );
-       // var hashing = new PasswordHasher<ApplicationUser>();
+        var hashing = new PasswordHasher<ApplicationUser>();
         builder.Entity<ApplicationUser>().HasData
             (
             new ApplicationUser()
@@ -40,7 +40,8 @@ public class IdentityDbContext : IdentityDbContext<ApplicationUser>
                 NormalizedEmail = "WOJTEK.NOWAK@WP.PL",
                 LockoutEnabled = true,
                 UserName = "wojtek.nowak@wp.pl",
-                PasswordHash = "AQAAAAEAACcQAAAAEDn7zJKNvOxOJfiD0sU1ClLdi140pn37dVEyVZNdtIQ3a6518bnRWOZ94ZNZWYpbyw=="
+                NormalizedUserName = "wojtek.nowak@wp.pl",
+                PasswordHash = hashing.HashPassword(null, "zaq1@WSX")
             }
             );
         builder.Entity<IdentityUserRole<string>>().HasData(

@@ -5,7 +5,7 @@ using projektAspNet.Areas.Identity.Data;
 
 namespace projektAspNet.Data;
 
-public class IdentityDbContext : IdentityDbContext<AppUser>
+public class IdentityDbContext : IdentityDbContext<ApplicationUser>
 {
     public IdentityDbContext(DbContextOptions<IdentityDbContext> options)
         : base(options)

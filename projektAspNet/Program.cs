@@ -3,24 +3,23 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using projektAspNet.Service;
-using projektAspNet.Data;
-using projektAspNet.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using projektAspNet.Data;
 //using projektAspNet.Data;
-//using projektAspNet.Areas.Identity.Data;
+using projektAspNet.Areas.Identity.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 var connectionString = builder.Configuration.GetConnectionString("Default") ?? throw new InvalidOperationException("Connection string 'Default' not found.");
 builder.Services.AddDbContext<AppDbContext>(
     options => options.UseSqlServer(connectionString));
-builder.Services.AddIdentity<AppUser, IdentityRole>()
-.AddEntityFrameworkStores<AppDbContext>()
-.AddDefaultTokenProviders()
-.AddDefaultUI()
-.AddRoles<IdentityRole>()
-.AddEntityFrameworkStores<AppDbContext>(); 
-builder.Services.AddRazorPages();
+builder.Services.AddDbContext<IdentityDbContext>(
+    options => options.UseSqlServer(connectionString));
+
+builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<IdentityDbContext>();
+
 
                
 builder.Services.AddScoped<IEventsService, EventsServiceEF>();
@@ -38,6 +37,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapRazorPages();

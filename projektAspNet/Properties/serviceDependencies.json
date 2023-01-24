@@ -2,11 +2,7 @@
   "dependencies": {
     "mssql1": {
       "type": "mssql",
-      "connectionId": "ConnectionStrings:IdenttityDbContextConnection"
-    },
-    "mssql2": {
-      "type": "mssql",
-      "connectionId": "ConnectionStrings:IdentityUserDbContextConnection"
+      "connectionId": "ConnectionStrings:IdentityDbContextConnection"
     }
   }
 }

@@ -6,11 +6,7 @@ namespace projektAspNet.Models
     [Table("Routes")]
     public class Route
     {
-        // public Route() 
-        // {
-        //     Customers = new HashSet<Customer>();
-        //      Reservations= new HashSet<Reservation>();  
-        //   }
+        
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [HiddenInput]
@@ -24,8 +20,6 @@ namespace projektAspNet.Models
         [Display(Name = "Route Length")]
         [Required(ErrorMessage = "Route Length is required")]
         public string Route_Length { get; set; }
-        //   public virtual ISet<Customer> Customers { get; set; }
-        //    public virtual ISet<Reservation> Reservations { get; set; }
         public ICollection<Reservation> Reservation { get; set; }
     }
 }

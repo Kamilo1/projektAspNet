@@ -164,7 +164,7 @@ namespace projektAspNet.Migrations.IdentityDb
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "d57a3861-3c43-4ed0-86c1-c6f604a3afe7", 0, "d7f4d9cb-0f7f-4492-9d6e-fb7a9dc899e6", "wojtek.nowak@wp.pl", true, true, null, "WOJTEK.NOWAK@WP.PL", "wojtek.nowak@wp.pl", "AQAAAAEAACcQAAAAEDqGjuSWaUGscTZwZyKd73jr+bjMmCHGFswiwp6pDAQ4nxeJhH3wLsXuzMWIzHy4/A==", null, false, "5554de00-f8da-44e5-b4e5-80d3afa1d32f", false, "wojtek.nowak@wp.pl" });
+                values: new object[] { "d57a3861-3c43-4ed0-86c1-c6f604a3afe7", 0, "de043004-ca05-4464-b5a9-f58a0405f236", "wojtek.nowak@wp.pl", true, true, null, "WOJTEK.NOWAK@WP.PL", "wojtek.nowak@wp.pl", "AQAAAAEAACcQAAAAEDiTjomrf1EtrZ1j3aGHiIyMo3ovhadqhgRG73ZNcvgLmTYJB8wU11ApR38Ssk7vYw==", null, false, "b985b5b6-5389-4fee-b977-06ecdac818cd", false, "wojtek.nowak@wp.pl" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",

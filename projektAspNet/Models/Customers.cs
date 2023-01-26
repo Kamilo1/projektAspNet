@@ -6,11 +6,7 @@ namespace projektAspNet.Models
     [Table("Customers")]
     public class Customer
     {
-        //  public Customer() 
-        //    {
-        //    Routes = new HashSet<Route>();
-        //       Reservations = new HashSet<Reservation>();
-        //   }
+        
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [HiddenInput]
@@ -34,8 +30,6 @@ namespace projektAspNet.Models
         [Display(Name = "NIP")]
         [StringLength(10)]
         public string NIP { get; set; }
-        //  public virtual ISet<Route> Routes { set; get; }
-        //  public virtual ISet<Reservation> Reservations { set; get; }
         public ICollection<Reservation> Reservation { get; set; }
 
 

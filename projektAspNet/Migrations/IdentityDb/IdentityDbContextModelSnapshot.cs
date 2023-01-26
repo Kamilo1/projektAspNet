@@ -244,15 +244,15 @@ namespace projektAspNet.Migrations.IdentityDb
                         {
                             Id = "d57a3861-3c43-4ed0-86c1-c6f604a3afe7",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d7f4d9cb-0f7f-4492-9d6e-fb7a9dc899e6",
+                            ConcurrencyStamp = "de043004-ca05-4464-b5a9-f58a0405f236",
                             Email = "wojtek.nowak@wp.pl",
                             EmailConfirmed = true,
                             LockoutEnabled = true,
                             NormalizedEmail = "WOJTEK.NOWAK@WP.PL",
                             NormalizedUserName = "wojtek.nowak@wp.pl",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDqGjuSWaUGscTZwZyKd73jr+bjMmCHGFswiwp6pDAQ4nxeJhH3wLsXuzMWIzHy4/A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDiTjomrf1EtrZ1j3aGHiIyMo3ovhadqhgRG73ZNcvgLmTYJB8wU11ApR38Ssk7vYw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "5554de00-f8da-44e5-b4e5-80d3afa1d32f",
+                            SecurityStamp = "b985b5b6-5389-4fee-b977-06ecdac818cd",
                             TwoFactorEnabled = false,
                             UserName = "wojtek.nowak@wp.pl"
                         });

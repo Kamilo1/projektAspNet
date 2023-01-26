@@ -12,7 +12,7 @@ using projektAspNet.Models;
 namespace projektAspNet.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230124184554_initialCreate")]
+    [Migration("20230126141912_initialCreate")]
     partial class initialCreate
     {
         /// <inheritdoc />
